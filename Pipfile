@@ -6,6 +6,7 @@ name = "pypi"
 [dev-packages]
 pytest = "*"
 pytest-mock = "*"
+tox = "*"
 
 [packages]
 "boto3" = "*"

@@ -4,8 +4,8 @@ from pgbackup import storage
 
 @pytest.fixture()
 def infile():
-    infile = tempfile.TemporaryFile('r+')
-    infile.write("Testing")
+    infile = tempfile.TemporaryFile('r+b')
+    infile.write(b"Testing")
     infile.seek(0)
     return infile
 
@@ -14,9 +14,6 @@ def test_storing_file_locally(infile):
     """
     Write content from one file-like to another
     """
-    infile = tempfile.TemporaryFile('r+')
-    infile.write("Testing")
-    infile.seek(0)
 
     outfile = tempfile.NamedTemporaryFile(delete=False)
     storage.local(infile, outfile)
